@@ -1,9 +1,8 @@
 import express from 'express';
-import { getAllProducts, getProductById } from '../controllers/productController';
+import { getPaginatedProducts } from '../controllers/productController';
 
 const router = express.Router();
 
-router.get('/', getAllProducts);
-router.get('/:id', getProductById);
+router.get('/', getPaginatedProducts); // /api/products?page=1&limit=20
 
 export default router;

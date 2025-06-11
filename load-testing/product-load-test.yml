@@ -1,0 +1,11 @@
+config:
+  target: "http://localhost:5000"
+  phases:
+    - duration: 30 # Test duration in seconds
+      arrivalRate: 5 # Requests per second
+  processor: "./functions.js"  # 👈 Better than faker
+scenarios:
+  - flow:
+      - function: "generatePage"
+      - get:
+          url: "/api/products?page={{ page }}&limit=20"

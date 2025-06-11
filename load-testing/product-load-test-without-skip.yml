@@ -1,0 +1,23 @@
+config:
+  target: "http://localhost:5000"
+  phases:
+    - duration: 30
+      arrivalRate: 30
+  processor: "./functions.js"
+
+scenarios:
+  - name: "CreatedAt cursor pagination"
+    weight: 50
+    flow:
+      - function: "generatePage"
+      - get:
+          url: "{{ url }}"
+          afterResponse: "updatePage"
+
+  - name: "_id cursor pagination"
+    weight: 50
+    flow:
+      - function: "generateCursor"
+      - get:
+          url: "{{ url }}"
+          afterResponse: "updateCursor"

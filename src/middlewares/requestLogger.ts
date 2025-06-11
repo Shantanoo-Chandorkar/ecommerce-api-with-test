@@ -7,6 +7,6 @@ const stream = {
 };
 
 // Morgan middleware using winston
-const requestLogger = morgan('combined', { stream });
+const requestLogger = morgan('info', { stream });
 
 export default requestLogger;
